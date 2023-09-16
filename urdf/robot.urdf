@@ -8,8 +8,7 @@
         <material>Gazebo/TurquoiseGlow</material>
     </gazebo>
     <gazebo reference="link_caster_wheel">
-        <material>Gazebo/Grey</material>
-        <mu1>
+        <material>Gazebo/Grey</material>    
     </gazebo>
     <gazebo reference="link_left_wheel">
         <material>Gazebo/Wood</material>
