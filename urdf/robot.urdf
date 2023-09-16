@@ -1,17 +1,21 @@
 <?xml version="1.0" ?>
 
 <robot name="robot">
+    <gazebo reference="joint_chassis_caster_wheel">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
     <gazebo reference="link_chassis">
-        <material>Gazebo/Blue</material>
+        <material>Gazebo/TurquoiseGlow</material>
     </gazebo>
     <gazebo reference="link_caster_wheel">
         <material>Gazebo/Grey</material>
+        <mu1>
     </gazebo>
     <gazebo reference="link_left_wheel">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/Wood</material>
     </gazebo>
     <gazebo reference="link_right_wheel">
-        <material>Gazebo/Black</material>
+        <material>Gazebo/Wood</material>
     </gazebo>
     <!-- Link - chassis -->
     <link name="link_chassis">
