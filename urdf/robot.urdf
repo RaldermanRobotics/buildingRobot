@@ -8,13 +8,34 @@
         <material>Gazebo/TurquoiseGlow</material>
     </gazebo>
     <gazebo reference="link_caster_wheel">
-        <material>Gazebo/Grey</material>    
+        <material>Gazebo/Blue</material> 
+        <mu1>0</mu1>
+        <mu2>0</mu2>   
     </gazebo>
     <gazebo reference="link_left_wheel">
         <material>Gazebo/Wood</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
     </gazebo>
     <gazebo reference="link_right_wheel">
         <material>Gazebo/Wood</material>
+        <mu1>1</mu1>
+        <mu2>1</mu2>    
+    </gazebo>
+    <gazebo>
+        <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>20</updateRate>
+            <leftJoint>joint_chassis_left_wheel</leftJoint>
+            <rightJoint>joint_chassis_right_wheel</rightJoint>
+            <wheelSeparation>1.66</wheelSeparation>
+            <wheelDiameter>0.8</wheelDiameter>
+            <torque>10</torque>
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <odometryFrame>odom</odometryFrame>
+            <robotBaseFrame>link_chassis</robotBaseFrame>
+        </plugin>
     </gazebo>
     <!-- Link - chassis -->
     <link name="link_chassis">
@@ -214,5 +235,42 @@
                 <color rgba="0.6 0.6 0.6 1" />
             </material>
         </visual>
+    </link>
+    <!-- Gazebo tags - Laser scan -->
+<gazebo reference="joint_laser_scan_chassis">
+    <preserveFixedJoint>true</preserveFixedJoint>
+</gazebo>
+<gazebo reference="link_laser_scan">
+    <material>Gazebo/DarkGrey</material>
+</gazebo>
+
+    <!-- Laser scan -->
+    <joint name="joint_laser_scan_chassis" type="fixed">
+        <origin rpy="0 0 0" xyz="0.8 0 0.3" />
+        <child link="link_laser_scan" />
+        <parent link="link_chassis" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+    <link name="link_laser_scan">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.5" />
+            <inertia ixx="0.000252666666667" ixy="0" ixz="0" iyy="0.000252666666667" iyz="0" izz="0.0005"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.15" length="0.20"/>
+            </geometry>
+            <material name="Red">
+                <color rgba="0.7 0.1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.15" length="0.20"/>
+            </geometry>
+        </collision>
     </link>
 </robot>
