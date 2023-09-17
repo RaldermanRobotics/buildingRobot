@@ -67,12 +67,12 @@
             </plugin>
         </sensor>
     </gazebo>
-<!-- Gazebo tags - Laser scan -->
-<gazebo reference="joint_laser_scan_chassis">
-    <preserveFixedJoint>true</preserveFixedJoint>
-</gazebo>
-<gazebo reference="link_laser_scan">
-    <material>Gazebo/DarkGrey</material>
-</gazebo>
+    <!-- Gazebo tags - Laser scan -->
+    <gazebo reference="joint_laser_scan_chassis">
+        <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+    <gazebo reference="link_laser_scan">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
 
 </robot>
